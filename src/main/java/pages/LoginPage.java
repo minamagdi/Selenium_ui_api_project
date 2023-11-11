@@ -11,10 +11,11 @@ public class LoginPage extends BasePage {
 	private final By passwordField = By.xpath("//input[@data-testid='password']");
 	private final By loginBtn = By.cssSelector("[name='submit']");
 
-	public void login(String email, String password) {
+	public TodoPage login(String email, String password) {
 		driver.findElement(emailField).sendKeys(email);
 		driver.findElement(passwordField).sendKeys(password);
 		driver.findElement(loginBtn).click();
+		return new TodoPage(driver);
 	}
 
 	public void assertLoginSuccessfully() {
