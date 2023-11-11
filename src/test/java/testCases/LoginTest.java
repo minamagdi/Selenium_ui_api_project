@@ -1,6 +1,7 @@
 package testCases;
 
 import base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.LoginProperties;
@@ -8,13 +9,16 @@ import utils.LoginProperties;
 public class LoginTest extends BaseTest {
 
 	@Test
-	public void userShouldBeAbleToLoginWithValidCredential() {
+	public void userShouldBeAbleToLoginWithValidCredential() throws InterruptedException {
 		loginPage.login(LoginProperties.readData().getProperty("email"),
 				LoginProperties.readData().getProperty("password"));
+
+		Assert.assertEquals(todoPage.getActualUrl(),todoPage.getExpectedURL());
 	}
 	@Test(dataProvider = "loginData")
 	public void userShouldBeNotAbleToLoginWithINValidCredential(String email, String password) {
 		loginPage.login(email, password);
+		Assert.assertEquals(loginPage.getActualUrl(),todoPage.getExpectedUrlWithInvalidData());
 	}
 	@DataProvider
 	public Object[][] loginData () {

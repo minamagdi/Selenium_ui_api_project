@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.TodoPage;
 
 import java.time.Duration;
 
@@ -12,6 +13,7 @@ public class BaseTest {
 	protected WebDriver driver;
     protected LoginPage loginPage;
     protected HomePage homePage;
+    protected TodoPage todoPage;
 	@BeforeMethod
 	public void setUp() {
 		driver = DriverFactory.driverInit();
@@ -21,5 +23,6 @@ public class BaseTest {
 		driver.get("https://qacart-todo.herokuapp.com/");
 		loginPage = new LoginPage(driver);
 		homePage = new HomePage(driver);
+		todoPage = new TodoPage(driver);
 	}
 }

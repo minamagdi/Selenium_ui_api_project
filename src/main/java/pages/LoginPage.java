@@ -2,6 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage extends BasePage {
 	public LoginPage(WebDriver driver) {
@@ -17,14 +21,7 @@ public class LoginPage extends BasePage {
 		driver.findElement(loginBtn).click();
 		return new TodoPage(driver);
 	}
-
-	public void assertLoginSuccessfully() {
-		String expectedUrl = "https://qacart-todo.herokuapp.com/todo";
-		String actualUrl = driver.getCurrentUrl();
-	}
-
-	public void assertLoginIsNotSuccessfully() {
-		String expectedUrl = "https://qacart-todo.herokuapp.com/";
-		String actualUrl = driver.getCurrentUrl();
+	public String getActualUrl() {
+		return driver.getCurrentUrl();
 	}
 }
