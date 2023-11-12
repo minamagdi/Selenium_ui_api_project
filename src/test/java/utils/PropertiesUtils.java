@@ -5,16 +5,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class LoginProperties {
-	public static Properties readData() {
-		File file = new File("src/test/java/config/login.properties");
+public class PropertiesUtils {
+	public static Properties readDataFromPropertyFile(String pathName) {
+		File file = new File(pathName);
 		try {
 			FileInputStream fileInputStream = new FileInputStream(file);
 			Properties properties = new Properties();
 			properties.load(fileInputStream);
+			fileInputStream.close();
 			return properties;
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("can not find the file");
 		}
 	}
 }

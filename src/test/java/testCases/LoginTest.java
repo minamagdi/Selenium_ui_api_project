@@ -4,14 +4,14 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.LoginProperties;
+import utils.PropertiesUtils;
 
 public class LoginTest extends BaseTest {
-
+	private final String pathName = "src/test/java/config/login.properties";
 	@Test
 	public void userShouldBeAbleToLoginWithValidCredential() throws InterruptedException {
-		loginPage.login(LoginProperties.readData().getProperty("email"),
-				LoginProperties.readData().getProperty("password"));
+		loginPage.login(PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("email"),
+				PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("password"));
 
 		Assert.assertEquals(todoPage.getActualUrl(),todoPage.getExpectedURL());
 	}
@@ -22,13 +22,14 @@ public class LoginTest extends BaseTest {
 	}
 	@DataProvider
 	public Object[][] loginData () {
+
 		String[][] data = new String[3][2];
-		data[0][0] = LoginProperties.readData().getProperty("wrongEmail");
-		data[0][1] = LoginProperties.readData().getProperty("password");
-		data[1][0] = LoginProperties.readData().getProperty("email");
-		data[1][1] = LoginProperties.readData().getProperty("wrongPassword");
-		data[2][0] = LoginProperties.readData().getProperty("wrongEmail");
-		data[2][1] = LoginProperties.readData().getProperty("wrongPassword");
+		data[0][0] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("wrongEmail");
+		data[0][1] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("password");
+		data[1][0] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("email");
+		data[1][1] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("wrongPassword");
+		data[2][0] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("wrongEmail");
+		data[2][1] = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("wrongPassword");
 		return data;
 	}
 }
