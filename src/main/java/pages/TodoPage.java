@@ -44,8 +44,9 @@ public class TodoPage extends BasePage{
 		driver.findElement(markAsCompletedCheckBtn).click();
 		return this;
 	}
-	public void deleteSpecificTask(String name) {
+	public TodoPage deleteSpecificTask(String name) {
 		driver.findElement(deleteTaskBtnLocator(name)).click();
+		return this;
 	}
 
 	public String getWelcomeMessage(String userName) {
