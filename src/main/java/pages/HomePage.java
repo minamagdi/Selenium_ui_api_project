@@ -15,6 +15,7 @@ public class HomePage extends BasePage{
 	private final By passwordField = By.cssSelector("[data-testid='password']");
 	private final By confirmPasswordField = By.cssSelector("[data-testid='confirm-password']");
 	private final By submitBtn = By.cssSelector("[data-testid='submit']");
+
 	public void signUp(String fName,String lName,String email,String password) {
 		driver.findElement(signUpBtn).click();
 		driver.findElement(firstNameField).sendKeys(fName);
