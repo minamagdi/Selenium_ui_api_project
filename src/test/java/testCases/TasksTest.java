@@ -59,9 +59,15 @@ public class TasksTest extends BaseTest {
 
 	@Test
 	public void deleteTask_api_register_addTask() {
+		RegisterApi registerApi = new RegisterApi();
+		registerApi.register();
 
 		AddTasksApi addTasksApi = new AddTasksApi();
-		addTasksApi.addTask("Learn Cypress");
-
+		addTasksApi.addTask(registerApi.getAccess_token());
+		reload();
+		injectCookiesToBrowser(registerApi.getRestassuredCookies());
+		reload();
+		todoPage.deleteSpecificTask("learn selenium");
+		Assert.assertTrue(todoPage.getNoTodoMessage());
 	}
 }

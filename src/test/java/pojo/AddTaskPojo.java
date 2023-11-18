@@ -2,26 +2,26 @@ package pojo;
 
 public class AddTaskPojo {
 	private boolean isCompleted;
-	private String itemName;
+	private String item;
 
 	public AddTaskPojo(boolean isCompleted, String itemName) {
 		this.isCompleted = isCompleted;
-		this.itemName = itemName;
+		this.item = itemName;
 	}
 
-	public boolean isCompleted() {
+	public boolean getIsCompleted() {
 		return isCompleted;
 	}
 
-	public void setCompleted(boolean completed) {
+	public void setIsCompleted(boolean completed) {
 		isCompleted = completed;
 	}
 
-	public String getItemName() {
-		return itemName;
+	public String getItem() {
+		return item;
 	}
 
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
+	public void setItem(String itemName) {
+		this.item = itemName;
 	}
 }

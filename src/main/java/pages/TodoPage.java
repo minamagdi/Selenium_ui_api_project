@@ -71,4 +71,9 @@ public class TodoPage extends BasePage{
 	public boolean getNoTodoMessage() {
 		return driver.findElement(noTodos).isDisplayed();
 	}
+
+	public TodoPage load() {
+		driver.get("https://qacart-todo.herokuapp.com/todo");
+		return this;
+	}
 }

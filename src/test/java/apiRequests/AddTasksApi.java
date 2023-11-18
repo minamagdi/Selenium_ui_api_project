@@ -5,13 +5,14 @@ import pojo.AddTaskPojo;
 import static io.restassured.RestAssured.given;
 
 public class AddTasksApi {
-	public void addTask(String tasksName) {
-		AddTaskPojo body = new AddTaskPojo(false,tasksName);
-		RegisterApi registerApi = new RegisterApi();
+	public void addTask(String token) {
+		AddTaskPojo body = new AddTaskPojo(false,"learn selenium");
+
 		given()
 				.baseUri("https://qacart-todo.herokuapp.com")
 				.header("Content-Type","application/json")
-				.header("Authorization","Bearer "+registerApi.getAccess_token())
+				//.header("Authorization","Bearer "+registerApi.getAccess_token())
+				.auth().oauth2(token)
 				.body(body)
 		.when()
 				.post("/api/v1/tasks")
