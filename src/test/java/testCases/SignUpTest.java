@@ -18,20 +18,20 @@ public class SignUpTest extends BaseTest {
 	@Test
 	public void signUpWithValidData() {
 		homePage
-				.signUp("adhm","mohamed","adhmed2@test.com","Adham123456");
+				.signUp("adhm","mohamed","adhmed3@test.com","Adham123456");
 
 		Assert.assertEquals(todoPage.getWelcomeMessage("adhm"),"GOOD MORNING ADHM");
 	}
 	@Test
 	public void signUpWithValidData_api() {
 		String body = "{" +
-				"\"email\":\"marwa23@wed.com\"," +
+				"\"email\":\"marwa223@wed.com\"," +
 				"\"password\":\"Mina123456\"," +
 				"\"firstName\":\"marwa\"," +
 				"\"lastName\":\"alaa\"" +
 				"}";
 		Map<String, String> body2 = new HashMap<>();
-		body2.put("email","marwa23@wed.com");
+		body2.put("email","marwa232@wed.com");
 		body2.put("password","Mina123456");
 		body2.put("firstName","marwa");
 		body2.put("lastName","alaa2");
@@ -83,9 +83,7 @@ public class SignUpTest extends BaseTest {
 			driver.manage().addCookie(seleniumCookie);
 		}
 		// reload page
-		String pathName = "src/test/java/config/baseUrl.properties";
-		String baseUrl = PropertiesUtils.readDataFromPropertyFile(pathName).getProperty("url");
-		driver.get(baseUrl);
+		reload();
 	}
 
 }
