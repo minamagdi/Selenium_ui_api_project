@@ -1,5 +1,6 @@
 package testCases;
 
+import apiRequests.AddTasksApi;
 import apiRequests.RegisterApi;
 import base.BaseTest;
 import org.testng.Assert;
@@ -29,7 +30,7 @@ public class TasksTest extends BaseTest {
 		Assert.assertEquals(todoPage.getTaskName("Learn js"),expectedResult);
 	}
 	@Test
-	public void deleteTask_api() {
+	public void deleteTask() {
 		loginPage.login(PropertiesUtils.readDataFromPropertyFile(loginPropertyPathName).getProperty("email"),
 						PropertiesUtils.readDataFromPropertyFile(loginPropertyPathName).getProperty("password"))
 				.addNewTask("Learn Cypress")
@@ -41,7 +42,7 @@ public class TasksTest extends BaseTest {
 		Assert.assertTrue(todoPage.getNoTodoMessage());
 	}
 	@Test
-	public void deleteTask() {
+	public void deleteTask_api_register() {
 		RegisterApi registerApi = new RegisterApi();
 		registerApi.register();
 		injectCookiesToBrowser(registerApi.getRestassuredCookies());
@@ -54,5 +55,13 @@ public class TasksTest extends BaseTest {
 				.deleteSpecificTask("Learn Cypress");
 
 		Assert.assertTrue(todoPage.getNoTodoMessage());
+	}
+
+	@Test
+	public void deleteTask_api_register_addTask() {
+
+		AddTasksApi addTasksApi = new AddTasksApi();
+		addTasksApi.addTask("Learn Cypress");
+
 	}
 }
