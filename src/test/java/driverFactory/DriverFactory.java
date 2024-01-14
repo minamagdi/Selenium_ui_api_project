@@ -9,7 +9,6 @@ import java.time.Duration;
 
 public class DriverFactory {
 
-	public static WebDriver driver;
 	public static WebDriver driverInit() {
 		String browser = "chrome";		// System.getProperty("browser");
 		return switch (browser.toLowerCase()) {
