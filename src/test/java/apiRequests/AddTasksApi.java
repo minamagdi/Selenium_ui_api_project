@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 public class AddTasksApi {
 	public void addTask(String token) {
 		AddTaskPojo body = new AddTaskPojo(false,"learn selenium");
-
+//        AddTaskPojo body = AddTaskPojo.builder().isCompleted(false).item("learn selenium").build();
 		given()
 				.baseUri("https://qacart-todo.herokuapp.com")
 				.header("Content-Type","application/json")
