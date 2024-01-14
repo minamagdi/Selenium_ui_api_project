@@ -71,7 +71,8 @@ public class LoginTest extends BaseTest {
 
 	@Test
 	public void userShouldBeAbleToLoginWithValidCredential_api_pojoClass() {
-		LoginPojo loginBody = new LoginPojo("mina@test.com","Mina123456");// you will need jackson data bind to
+		//LoginPojo loginBody = new LoginPojo("mina@test.com","Mina123456");// you will need jackson data bind to
+		LoginPojo loginBody = LoginPojo.builder().email("mina@test.com").password("Mina123456").build();
 		// serialize from java object to json
 		given()
 				.baseUri("https://qacart-todo.herokuapp.com")
