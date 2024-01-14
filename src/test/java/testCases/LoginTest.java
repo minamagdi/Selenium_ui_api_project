@@ -46,9 +46,9 @@ public class LoginTest extends BaseTest {
 				.baseUri("https://qacart-todo.herokuapp.com")
 				.body(loginBody)
 				.header("Content-Type","application/json")
-				.when()
+		.when()
 				.post("/api/v1/users/login")
-				.then()
+		.then()
 				.log().all();
 	}
 
